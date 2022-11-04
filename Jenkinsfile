@@ -14,7 +14,7 @@ pipeline {
           steps{
             echo 'Compiling vote app'
             dir('vote'){
-              //sh 'pip install -r requirements.txt'
+              sh 'pip install -r requirements.txt'
             }
           }
 
@@ -29,8 +29,8 @@ pipeline {
           steps{
             echo 'Running Unit Tests on vote app'
             dir('vote'){
-              //sh 'pip install -r requirements.txt'
-              //sh 'nosetests -v'
+              sh 'pip install -r requirements.txt'
+              sh 'nosetests -v'
             }
           }
       }
@@ -38,14 +38,14 @@ pipeline {
           agent any
           steps{
             echo 'Packaging vote app with docker'
-            script{
+            /*script{
               docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                   def voteImage = docker.build("arjun10792/vote:v${env.BUILD_ID}", "./vote")
                   voteImage.push()
                   voteImage.push("dev")
 	          voteImage.push("latest")
               }
-            }
+            }*/
           }
       }
 
