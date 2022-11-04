@@ -41,9 +41,9 @@ pipeline {
             script{
               docker.withRegistry('https://index.docker.io/v2/', 'dockerlogin') {
                   def voteImage = docker.build("arjun10792/vote:v${env.BUILD_ID}", "./vote")
-                  voteImage.push()
-                  voteImage.push("dev")
-	          voteImage.push("latest")
+                  //voteImage.push()
+                  //voteImage.push("dev")
+	          //voteImage.push("latest")
               }
             }
           }
